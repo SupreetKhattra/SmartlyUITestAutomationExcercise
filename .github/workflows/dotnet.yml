@@ -1,0 +1,61 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        browser: [chrome, edge]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 3.1
+
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@v1
+
+    - run: |
+        # Print Chrome version
+        chrome --version
+
+    - name: Setup Edge
+      run: |
+        # Ensure the path to msedgedriver.exe is correct
+        $edgeDriverPath = "$(Get-Location)\bin\Debug\netcoreapp3.1\msedgedriver.exe"
+        [System.Environment]::SetEnvironmentVariable('PATH', "$env:PATH;$edgeDriverPath", [System.EnvironmentVariableTarget]::Process)
+        Write-Host "Edge WebDriver setup complete"
+
+
+    - run: |
+        # Print Edge version
+        Get-Command msedgedriver -ErrorAction SilentlyContinue | ForEach-Object { $_.FileVersionInfo.ProductVersion }
+
+    - name: Restore dependenciess
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      env:
+        BROWSER: ${{matrix.browser}}
+        FIRSTNAME: ${{ matrix.browser == 'chrome' && 'John' || 'Jane' }}
+        LASTNAME: ${{ matrix.browser == 'chrome' && 'Doe' || 'Dane' }}
+        USERNAME: ${{ matrix.browser == 'chrome' && 'johndoe199' || 'janedane199' }}
+        PASSWORD: password123
+        browserOptions: headless
+
+      

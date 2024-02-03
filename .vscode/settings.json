@@ -1,0 +1,7 @@
+{
+    "cucumberautocomplete.steps": [ 
+        "./Steps/**/*.cs"
+    ],
+    "terminal.integrated.letterSpacing": 0,
+    "autoit.consoleParams": ""
+}
