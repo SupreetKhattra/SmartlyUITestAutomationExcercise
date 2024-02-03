@@ -16,7 +16,7 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium.DevTools.V119.Network;
 using SeleniumExtras.WaitHelpers;
-using OpenQA.Selenium.DevTools.V121.FedCm; // Make sure to include this namespace
+using OpenQA.Selenium.DevTools.V121.FedCm;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 using System.Threading.Tasks;
@@ -58,7 +58,7 @@ namespace specflowTesting1.Steps
           wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
 
           //Show the variables we are testing with
-          Console.WriteLine($"Variables user: {firstname}, {lastname}, {username}, {password}");
+          Console.WriteLine($"Variables used: {firstname}, {lastname}, {username}, {password}");
 
      }
 

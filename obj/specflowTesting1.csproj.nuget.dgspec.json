@@ -50,9 +50,17 @@
               "target": "Package",
               "version": "[16.5.0, )"
             },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.1, )"
+            },
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[3.17.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.17.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
@@ -89,14 +97,6 @@
             "WebDriverWaitExtensions": {
               "target": "Package",
               "version": "[2.0.2, )"
-            },
-            "nunit": {
-              "target": "Package",
-              "version": "[3.13.1, )"
-            },
-            "selenium.support": {
-              "target": "Package",
-              "version": "[4.17.0, )"
             }
           },
           "imports": [
