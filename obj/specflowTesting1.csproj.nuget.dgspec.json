@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\specflowTesting1.csproj": {}
+    "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\specflowTesting1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\specflowTesting1.csproj": {
+    "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\specflowTesting1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\specflowTesting1.csproj",
+        "projectUniqueName": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\specflowTesting1.csproj",
         "projectName": "specflowTesting1",
-        "projectPath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\specflowTesting1.csproj",
+        "projectPath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\specflowTesting1.csproj",
         "packagesPath": "C:\\Users\\supre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\obj\\",
+        "outputPath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\supre\\AppData\\Roaming\\NuGet\\NuGet.Config"

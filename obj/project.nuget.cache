@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IUqAp6XlUxf58W1+wX2ljCpvgY6LRWP3Yj//VU7D8gjceihNIwSsw9xCouaIK8VsVh5gPaGh/JV/xPL8fVBpPQ==",
+  "dgSpecHash": "VN+8aGXRCo0gjt1+Vv3+J6VptjpDAev98dVQQiu1pYrtYscQCijWepVYDBrcrCU2KATfwFS/FlCGWf1RSvrHvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\specflowTesting1\\specflowTesting1.csproj",
+  "projectFilePath": "C:\\Users\\supre\\OneDrive\\Documents\\Datacom\\SmartlyUIAutiomationExercise\\SmartlyUITestAutomationExcercise\\specflowTesting1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\supre\\.nuget\\packages\\anglesharp\\1.0.4\\anglesharp.1.0.4.nupkg.sha512",
     "C:\\Users\\supre\\.nuget\\packages\\bodi\\1.5.0\\bodi.1.5.0.nupkg.sha512",
