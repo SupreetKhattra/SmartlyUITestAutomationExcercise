@@ -36,7 +36,7 @@ namespace specflowTesting1.Steps
      private readonly ScenarioContext scenarioContext;
      private string loginUsername = "Admin";
      private string loginPassword = "admin123";
-     private string default_headless_option = "";
+     private string default_headless_option = "headless";
      //Get environment variable fom the YML file. Since tests run in parallel on different browsers
      private string firstname = Environment.GetEnvironmentVariable("FIRSTNAME") ?? "Aaa111";
      private string lastname = Environment.GetEnvironmentVariable("LASTNAME") ?? "Aaa111";
