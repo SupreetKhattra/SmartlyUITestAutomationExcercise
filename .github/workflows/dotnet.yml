@@ -54,7 +54,7 @@ jobs:
         BROWSER: ${{matrix.browser}}
         FIRSTNAME: ${{ matrix.browser == 'chrome' && 'John' || 'Jane' }}
         LASTNAME: ${{ matrix.browser == 'chrome' && 'Doe' || 'Dane' }}
-        USERNAME: ${{ matrix.browser == 'chrome' && 'johndoe198' || 'janedane198' }}
+        USERNAME: ${{ matrix.browser == 'chrome' && 'johndoe199' || 'janedane199' }}
         PASSWORD: password123
         browserOptions: headless
 
