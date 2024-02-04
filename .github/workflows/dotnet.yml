@@ -15,19 +15,24 @@ jobs:
         browser: [chrome, edge]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 3.1
 
-    - name: Setup Chrome
-      uses: browser-actions/setup-chrome@v1
+    # - name: Setup Chrome
+    #   uses: browser-actions/setup-chrome@v1
 
+    - uses: browser-actions/setup-chrome@v1
+      id: setup-chrome
     - run: |
-        # Print Chrome version
-        chrome --version
+        ${{ steps.setup-chrome.outputs.chrome-path }} --version
+
+    # - run: |
+    #     # Print Chrome version
+    #     chrome --version
 
     - name: Setup Edge
       run: |
