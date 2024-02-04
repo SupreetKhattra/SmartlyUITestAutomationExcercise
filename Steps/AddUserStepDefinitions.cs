@@ -22,6 +22,7 @@ using WebDriverManager.DriverConfigs.Impl;
 using System.Threading.Tasks;
 using System.Drawing;
 using WebDriverManager.Services.Impl;
+using specflowTesting1.Drivers;
 
 
 namespace specflowTesting1.Steps
@@ -34,13 +35,11 @@ namespace specflowTesting1.Steps
      private IWebDriver driver;
      private WebDriverWait wait;
      private readonly ScenarioContext scenarioContext;
-     private string loginUsername = "Admin";
-     private string loginPassword = "admin123";
      private string default_headless_option = "headless";
      //Get environment variable fom the YML file. Since tests run in parallel on different browsers
      private string firstname = Environment.GetEnvironmentVariable("FIRSTNAME") ?? "Aaa111";
      private string lastname = Environment.GetEnvironmentVariable("LASTNAME") ?? "Aaa111";
-     private string username = Environment.GetEnvironmentVariable("USERNAME") ?? "johndoe";
+     private string username = Environment.GetEnvironmentVariable("USERNAME") ?? "johndoe567_";
      private string password = Environment.GetEnvironmentVariable("PASSWORD") ?? "password111";
      private string browserType = Environment.GetEnvironmentVariable("BROWSER") ?? "edge";
 
@@ -49,10 +48,8 @@ namespace specflowTesting1.Steps
      public void Setup()
      {
           // Initialize your WebDriver and WebDriverWait
-          driver = InitializeDriver();
-          
-          //Increase the browser window size to ensure all elements visible
-          driver.Manage().Window.Size = new Size(1920, 1080);
+          //driver = InitializeDriver();
+          driver = Driver.WebDriver;
 
           //Add a 20 second wait for finding driver elements in case the browser is running slowly
           wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
@@ -68,63 +65,7 @@ namespace specflowTesting1.Steps
           this.scenarioContext = scenarioContext;
        }
 
-     //Initialize the browser driver based on whichever browser we are using
-     private IWebDriver InitializeDriver()
-     {
-          //Get headless options variable from the environment (this is set in the dotnet.yml file)
-          //If the variable doesn't return anything, use nothing
-          var headlessOption = Environment.GetEnvironmentVariable("browserOptions") ?? default_headless_option;
-
-          Console.WriteLine("Browser type is: "); 
-          Console.WriteLine(browserType);
-
-          // If browser type is chrome, initialize chrome webdriver
-          if (browserType.Equals("chrome", StringComparison.OrdinalIgnoreCase))
-          {
-               //setup chrome options
-               var options = new ChromeOptions();
-               //Start maximized
-               options.AddArgument("start-maximized");
-
-               //if the headless option is set in the dotnet.yml file, add it to the options
-               if (headlessOption != null && headlessOption == "headless")
-               {
-                    Console.WriteLine("Browser is: headless"); 
-                    options.AddArgument("headless");
-               }
-
-               // Initialize ChromeDriver with the options
-               Console.WriteLine("Setting up chrome webdriver..."); 
-               return new ChromeDriver(options);
-
-          }
-          //Else if it's edge, initialize edge webdriver
-          else if (browserType.Equals("edge", StringComparison.OrdinalIgnoreCase))
-          {
-               //setup edge options
-               var options = new EdgeOptions();
-               options.AddArgument("start-maximized");
-
-               //if the headless option is set in the dotnet.yml file, add it to the options
-               if (headlessOption != null && headlessOption == "headless")
-               {
-                    Console.WriteLine("Browser is: headless"); 
-                    options.AddArgument("headless");
-               }
-
-               // Initialize EdgeDriver with the options
-               Console.WriteLine("Setting up edge webdriver..."); 
-               return new EdgeDriver(options);
-
-          }
-          // If no browser options found, throw an error
-          else
-          {
-               
-               throw new NotSupportedException($"Browser type '{browserType}' is not supported.");
-          }
-     }
-
+ 
      [Given(@"the user is on the login page '(.*)'")]
        public void UserIsOnTheLoginPage(string webUrl)
        {
@@ -392,7 +333,7 @@ namespace specflowTesting1.Steps
                {
                     break;
                }
-
+               attempt++;
           }
 
           if (snackbar_text != snackbar_message)
@@ -780,9 +721,21 @@ public void Whentheuserdeletestheemployee()
      public void TearDown()
      {
           // Cleanup code, such as closing the browser
-          Console.WriteLine("Closing driver");
+          Console.WriteLine("Logging out");
+          //Logout 
+          IWebElement userdropDown = wait.Until(ExpectedConditions.ElementExists(By.XPath("//p[@class='oxd-userdropdown-name']")));
+          userdropDown.Click();
+          IWebElement logoutOption = wait.Until(ExpectedConditions.ElementExists(By.XPath("//a[text()='Logout']")));
+          logoutOption.Click();
+     }
+
+          [AfterTestRun]
+     public static void AfterTestRun()
+     {
           //shutdown webdriver
-          driver.Quit();
+          //driver.Quit();
+          Console.WriteLine("Quitting driver");
+          Driver.QuitWebDriver();
      }
 
     }
